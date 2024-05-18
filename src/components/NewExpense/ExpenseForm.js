@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import './ExpenseForm.css';
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   const [enteredTittle, setEnteredTittle] = useState('');
   const [enteredAmount, setEnteredAmount] = useState('');
   const [enteredDate, setEnteredDate] = useState('');
@@ -54,11 +54,13 @@ const ExpenseForm = () => {
       date: new Date(enteredDate)
     }
 
+    //Passing the data on through props using a function and invoking it and passing the data through the function
+    props.onSaveExpenseData(expenseData);
+
+    //This is two way binding, passing data back into the form input
     setEnteredTittle('');
     setEnteredAmount('');
     setEnteredDate('');
-
-    console.log(expenseData);
   }
 
   return (
